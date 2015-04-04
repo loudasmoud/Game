@@ -7,6 +7,7 @@ public class UnitStats : MonoBehaviour {
 	public int unitStrength;
 	public int unitDetectionLevel;
 	public string unitName;
+	public int attackRange;
 	UnitSelector unitSelector;
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class UnitStats : MonoBehaviour {
 	void Update () {
 		//check for death
 		if (unitCurrentHealth <= 0) {
+			unitCurrentHealth = 0;
 			if (unitSelector.selectedUnit = gameObject){
 				unitSelector.selectedUnit = GameObject.Find ("UnitController");
 			}

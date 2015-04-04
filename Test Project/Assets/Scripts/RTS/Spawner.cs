@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour {
 			int rand = (int) Random.Range(0, spawnPoints.Length);
 			currentSpawnPoint = spawnPoints[rand].transform.position;
 			spawnTimer = 0.0f;
-			Debug.Log("Spawn");
+			//Debug.Log("Spawn");
 			Instantiate (objectToSpawn, currentSpawnPoint, spawnPoints[rand].transform.rotation);
 			currentObjects++;
 			//choose random spawn point (use length)

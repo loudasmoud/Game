@@ -20,6 +20,8 @@ public class AIMover : MonoBehaviour {
 	//bool wandering;
 	Vector3 wanderTo;
 	Vector3 wanderArea;
+	float updateChaseTimer;
+	UnitStats unitStats;
 
 	private AIPlayerDetection playerDetector;
 	private State currentState;
@@ -33,9 +35,10 @@ public class AIMover : MonoBehaviour {
 		playerDetector = gameObject.GetComponent<AIPlayerDetection> ();
 		returnPos = gameObject.transform.position;
 		wanderArea = gameObject.transform.position;
-
+		unitStats = gameObject.GetComponent<UnitStats> ();
 
 		searchTimer = searchTime;
+		updateChaseTimer = 0.0f;
 		//idleSearchTime = searchTime;
 
 
@@ -124,9 +127,11 @@ public class AIMover : MonoBehaviour {
 	}
 
 	void Chasing(){
+
+		updateChaseTimer += Time.deltaTime;
 		//stop chasing if outside of chase range
 		distanceFromHome = Vector3.Distance (returnPos, gameObject.transform.position);
-		Debug.Log (distanceFromHome);
+		//Debug.Log (distanceFromHome);
 		if (chaseRange < distanceFromHome){
 			currentState = State.Waiting;
 			return;
@@ -137,13 +142,17 @@ public class AIMover : MonoBehaviour {
 			return;
 		}
 		//IF THE PLAYER IS CLOSE ENOUGH ATTACK
-		if (Vector3.Distance (gameObject.transform.position, playerTarget.transform.position) < agent.stoppingDistance) {
+		if (Vector3.Distance (gameObject.transform.position, playerTarget.transform.position) < unitStats.attackRange) {
 			currentState = State.Wandering;
 			Debug.Log("Attack");
 			return;
 		}
 		//OTHER WISE KEEP CHASING
-		agent.SetDestination (playerTarget.transform.position);
+		//need to try to stop doing this every time
+		if (updateChaseTimer > 1) {
+			agent.SetDestination (playerTarget.transform.position);
+			updateChaseTimer = 0.0f;
+		}
 	}
 
 //	void ReturnHome(){

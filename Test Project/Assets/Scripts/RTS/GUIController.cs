@@ -36,8 +36,11 @@ public class GUIController : MonoBehaviour {
 			selectedUnitPos.anchoredPosition3D = unitSelectedUIPos;
 			unitSelectedOpen = true;
 		}
+	}
+	//moved this to late update so that it is destroyed after everything else, in case something is using it still (which it was)
+	void LateUpdate(){
 		if (unitSelector.selectedUnit.tag != "Enemy" && unitSelectedOpen) {
-			Debug.Log("Hello?");
+			//Debug.Log("Hello?");
 			Destroy (selectedUnitBG);
 			unitSelectedOpen = false;
 		}

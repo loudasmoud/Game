@@ -39,13 +39,22 @@ public class SelectedUnitWindow : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if (unitNameText.GetComponent<Text> ().text != unitSelector.selectedUnit.name) {
-			unitNameText.GetComponent<Text> ().text = unitSelector.selectedUnit.name;
+		if (unitStats != null) {
+			if (unitNameText.GetComponent<Text> ().text != unitStats.unitName) {
+				unitNameText.GetComponent<Text> ().text = unitStats.unitName;
+			}
+			unitStats = unitSelector.selectedUnit.GetComponent<UnitStats> ();
+			if (unitStats.unitCurrentHealth != currentHP)
+				currentHP = unitStats.unitCurrentHealth;
+			if (maxHP != unitStats.unitMaxHealth){
+				maxHP = unitStats.unitMaxHealth;
+			}
+			if (healthBar.maxValue != maxHP){
+				healthBar.maxValue = maxHP;
+			}
+			if (healthBar.value != currentHP){
+				healthBar.value = currentHP;
+			}
 		}
-		unitStats = unitSelector.selectedUnit.GetComponent<UnitStats> ();
-		currentHP = unitStats.unitCurrentHealth;
-		maxHP = unitStats.unitMaxHealth;
-		healthBar.maxValue = maxHP;
-		healthBar.value = currentHP;
 	}
 }

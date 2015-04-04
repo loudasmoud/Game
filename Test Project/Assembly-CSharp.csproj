@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\RTS\CameraController.cs" />
      <Compile Include="Assets\Scripts\RTS\GUIController.cs" />
      <Compile Include="Assets\Scripts\RTS\MovementIndicator.cs" />
+     <Compile Include="Assets\Scripts\RTS\PlayerGUIController.cs" />
      <Compile Include="Assets\Scripts\RTS\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RTS\Projectile.cs" />
      <Compile Include="Assets\Scripts\RTS\RTSMover.cs" />
