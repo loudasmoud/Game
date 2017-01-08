@@ -46,10 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\FPS\Door.cs" />
+     <Compile Include="Assets\Scripts\FPS\Flashlight.cs" />
      <Compile Include="Assets\Scripts\RTS\AIMover.cs" />
      <Compile Include="Assets\Scripts\RTS\AIPlayerDetection.cs" />
      <Compile Include="Assets\Scripts\RTS\CameraController.cs" />
      <Compile Include="Assets\Scripts\RTS\GUIController.cs" />
+     <Compile Include="Assets\Scripts\RTS\MeleeAttack.cs" />
      <Compile Include="Assets\Scripts\RTS\MovementIndicator.cs" />
      <Compile Include="Assets\Scripts\RTS\PlayerGUIController.cs" />
      <Compile Include="Assets\Scripts\RTS\PlayerMovement.cs" />
@@ -58,6 +61,7 @@
      <Compile Include="Assets\Scripts\RTS\SelectedUnitWindow.cs" />
      <Compile Include="Assets\Scripts\RTS\Shoot.cs" />
      <Compile Include="Assets\Scripts\RTS\Spawner.cs" />
+     <Compile Include="Assets\Scripts\RTS\TouchInput.cs" />
      <Compile Include="Assets\Scripts\RTS\UnitSelector.cs" />
      <Compile Include="Assets\Scripts\RTS\UnitStats.cs" />
      <Compile Include="Assets\Scripts\Spooky\AgentScript.cs" />

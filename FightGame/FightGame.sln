@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightGame.Plugins", "FightGame.Plugins.csproj", "{4C2940E8-917F-3D5D-832E-497F9589DD34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightGame", "FightGame.csproj", "{DBEDF0AB-4DB8-5216-FD5E-C9EAC44C7FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightGame.Editor.Plugins", "FightGame.Editor.Plugins.csproj", "{31B408B7-28B4-0646-81F7-5F87D33B31FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C2940E8-917F-3D5D-832E-497F9589DD34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2940E8-917F-3D5D-832E-497F9589DD34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2940E8-917F-3D5D-832E-497F9589DD34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2940E8-917F-3D5D-832E-497F9589DD34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEDF0AB-4DB8-5216-FD5E-C9EAC44C7FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEDF0AB-4DB8-5216-FD5E-C9EAC44C7FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEDF0AB-4DB8-5216-FD5E-C9EAC44C7FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEDF0AB-4DB8-5216-FD5E-C9EAC44C7FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B408B7-28B4-0646-81F7-5F87D33B31FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B408B7-28B4-0646-81F7-5F87D33B31FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B408B7-28B4-0646-81F7-5F87D33B31FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B408B7-28B4-0646-81F7-5F87D33B31FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

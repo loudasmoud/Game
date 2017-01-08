@@ -14,12 +14,15 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
+
 		if (Input.GetMouseButtonDown (1)) {
 			UpdateTargetPosition();
 			agent.SetDestination (moveToTarget.transform.position);
 			Instantiate(movementIndicatorPrefab, new Vector3(moveToTarget.transform.position.x, moveToTarget.transform.position.y + 0.5f, moveToTarget.transform.position.z), moveToTarget.transform.rotation);
 		}
 		//MovePlayer ();
+		//press s to stop moving
 		if (Input.GetKeyDown(KeyCode.S)){
 			agent.SetDestination(this.transform.position);
 			atDestination = true;
