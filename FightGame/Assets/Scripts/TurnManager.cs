@@ -9,6 +9,11 @@ public class TurnManager : MonoBehaviour {
     /// All actions are executed after all choices are made
     /// 
     /// </summary>
+    /// 
+
+    public GameObject currentTurn;
+    public GameObject nextTurn;
+    public GameObject overlord;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +21,11 @@ public class TurnManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
+
+    void UpdateCurrentTurn()
+    {
+
+    }
 }

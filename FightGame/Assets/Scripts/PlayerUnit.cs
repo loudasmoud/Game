@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerUnit : MonoBehaviour {
+
+    public GameObject player;
     GameObject healthBar;
     public GameObject healthBarUI;
     public GameObject overlord;
     Selector overlordSelector;
+    PlayerParty party;
 
     private void Awake()
     {
-        overlord = GameObject.FindGameObjectWithTag("UnitSelector");
-        overlordSelector = overlord.GetComponent<Selector>();
-        overlordSelector.playerUnits.Add(gameObject);
+        player = GameObject.FindGameObjectWithTag("Player");
+        party = player.GetComponent<PlayerParty>();
     }
 
     // Use this for initialization
     void Start () {
-        CreateHealthBar();
-        SetPlayerUnitPosition();
+
         
 	}
 	
@@ -26,6 +27,22 @@ public class PlayerUnit : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void StartBattle()
+    {
+        Debug.Log("Battle Started PLAYER");
+        overlord = GameObject.FindGameObjectWithTag("UnitSelector");
+        overlordSelector = overlord.GetComponent<Selector>();
+        //overlordSelector.playerUnits.Add(gameObject);
+        CreateHealthBar();
+        SetPlayerUnitPosition();
+
+    }
+
+    public void EndBattle()
+    {
+        //clean up the unit from the screen, also remove health bar
+    }
 
     private void OnMouseDown()
     {
@@ -37,7 +54,6 @@ public class PlayerUnit : MonoBehaviour {
         healthBar = Instantiate(healthBarUI);
         healthBar.GetComponent<HealthBar>().unit = gameObject;
         healthBar.transform.SetParent(GameObject.FindGameObjectWithTag("Player Stat Display").transform);
-        //healthBar.transform.localPosition = new Vector3(-80, 80 - (overlord.enemies.IndexOf(gameObject) * 20));
         healthBar.transform.localPosition = new Vector3(-3, 50 - (overlordSelector.playerUnits.IndexOf(gameObject) * 20));
     }
 

@@ -33,8 +33,24 @@ public class Enemy : MonoBehaviour {
 
     public GameObject unitSelector;
 
+
     // Use this for initialization
     void Awake () {
+		
+	}
+
+    void Start ()
+    {
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    public void StartBattle()
+    {
 
         unitSelector = GameObject.FindGameObjectWithTag("UnitSelector");
         currentTargetDisplay = GameObject.FindGameObjectWithTag("CurrentTarget");
@@ -42,25 +58,13 @@ public class Enemy : MonoBehaviour {
         //get this enemies stats
         thisEnemyStats = GetComponent<stats>();
         //add to list of enemies
-        unitSelectorSelector.enemies.Add(gameObject);
 
         //
         battleInfo = unitSelector.GetComponent<Info>();
-		
-	}
-
-    void Start ()
-    {
-
         //create hp bar
         CreateHealthBar();
         SetEnemyPosition();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnMouseDown()
     {
@@ -93,6 +97,7 @@ public class Enemy : MonoBehaviour {
         {
             battleInfo.EndBattle();
             unitSelectorSelector.HideSelectorIcon();
+            battleInfo.EndBattle();
             return true;
         }
         return false;

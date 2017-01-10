@@ -6,6 +6,7 @@ public class Info : MonoBehaviour {
 
     public int earnedXP;
     public int earnedGold;
+    public GameObject player;
     Selector unitSelector;
 
     private void Awake()
@@ -25,15 +26,26 @@ public class Info : MonoBehaviour {
     public void EndBattle()
     {
         AwardExperience();
+        AwardGold();
         //add gold to users gold
+        gameObject.SetActive(false);
+        unitSelector.battleUI.alpha = 0;
+        unitSelector.battleUI.interactable = false;
+        unitSelector.battleUI.blocksRaycasts = false;
     }
 
     void AwardExperience()
     {
+        //list of player units to add experience too
         foreach (GameObject i in unitSelector.playerUnits)
         {
             i.GetComponent<stats>().currentXP += earnedXP;
         }
-        //need list of player units to add experience too
+        earnedXP = 0;
+    }
+    void AwardGold()
+    {
+        player.GetComponent<Inventory>().totalGold += earnedGold;
+        earnedGold = 0;
     }
 }

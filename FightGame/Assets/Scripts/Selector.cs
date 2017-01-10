@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Selector : MonoBehaviour {
 
+    public GameObject player;
+    public GameObject gameInfo;
+    public CanvasGroup battleUI;
     public GameObject previousSelection;
     public GameObject currentSelection;
     public GameObject nextSelection;
@@ -16,18 +19,55 @@ public class Selector : MonoBehaviour {
     private void Awake()
     {
         
+
+
     }
     // Use this for initialization
     void Start ()
     {
-        selectedUnitDisplay = GameObject.FindGameObjectWithTag("CurrentTarget");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
+
+    private void OnEnable()
+    {
+        EnableBattleUI();
+        //start battle for all players in the active party;
+        foreach (GameObject i in player.GetComponent<PlayerParty>().activeParty)
+        {
+            playerUnits.Add(i);
+            i.GetComponent<PlayerUnit>().StartBattle();
+        }
+
+        // start battle for all enemies
+        foreach (GameObject i in gameInfo.GetComponent<EnemyCreator>().newEnemies)
+        {
+            enemies.Add(i);
+            i.GetComponent<Enemy>().StartBattle();
+        }
+        gameInfo.GetComponent<EnemyCreator>().newEnemies.Clear();
+        currentSelection = playerUnits[0];
+    }
+
+    public IEnumerator SelectTarget()
+    {
+        while (!Input.GetKeyDown("Submit"))
+        {
+            yield return null;
+        }
+    }
+
+    private void EnableBattleUI()
+    {
+        selectedUnitDisplay.SetActive(true);
+        battleUI.alpha = 1;
+        battleUI.interactable = true;
+        battleUI.blocksRaycasts = true;
+    }
 
     public void MoveSelectedIcon (float x, float y)
     {
@@ -43,6 +83,6 @@ public class Selector : MonoBehaviour {
 
     public void HideSelectorIcon()
     {
-        selectedUnitDisplay.GetComponent<SpriteRenderer>().enabled = false;
+        selectedUnitDisplay.SetActive(false);
     }
 }

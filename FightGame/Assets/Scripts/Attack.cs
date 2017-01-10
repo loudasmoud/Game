@@ -13,9 +13,6 @@ public class Attack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        targetStats = target.GetComponent<stats>();
-        myStats = attacker.GetComponent<stats>();
-        unitSelector = GameObject.FindGameObjectWithTag("UnitSelector").GetComponent<Selector>();
 	}
 	
 	// Update is called once per frame
@@ -23,13 +20,24 @@ public class Attack : MonoBehaviour {
 		
 	}
 
+    public void SetTarget()
+    {
+        unitSelector = GameObject.FindGameObjectWithTag("UnitSelector").GetComponent<Selector>();
+        target = unitSelector.enemies[0];
+        attacker = unitSelector.playerUnits[0];
+        targetStats = target.GetComponent<stats>();
+        myStats = attacker.GetComponent<stats>();
+
+    }
+
     public void RegularAttack ()
     {
+        unitSelector = GameObject.FindGameObjectWithTag("UnitSelector").GetComponent<Selector>();
+        StartCoroutine(unitSelector.SelectTarget());
         target = unitSelector.currentSelection;
         targetStats = target.GetComponent<stats>();
         myStats = attacker.GetComponent<stats>();
         targetStats.currentHP -= myStats.CalculateAttackDamage();
         target.GetComponent<Enemy>().CheckForDeath();
-
     }
 }
