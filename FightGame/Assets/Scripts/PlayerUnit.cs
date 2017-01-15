@@ -33,6 +33,7 @@ public class PlayerUnit : MonoBehaviour {
         Debug.Log("Battle Started PLAYER");
         overlord = GameObject.FindGameObjectWithTag("UnitSelector");
         overlordSelector = overlord.GetComponent<Selector>();
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         //overlordSelector.playerUnits.Add(gameObject);
         CreateHealthBar();
         SetPlayerUnitPosition();
@@ -42,6 +43,8 @@ public class PlayerUnit : MonoBehaviour {
     public void EndBattle()
     {
         //clean up the unit from the screen, also remove health bar
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(healthBar);
     }
 
     private void OnMouseDown()

@@ -28,6 +28,10 @@ public class stats : MonoBehaviour {
 
 	void Awake (){
         myEquipment = GetComponent<Equipment>();
+
+    }
+	void Start ()
+    {
         myWeapon = myEquipment.weapon;
         strength = baseStrength;
         intelligence = baseIntelligence;
@@ -36,9 +40,6 @@ public class stats : MonoBehaviour {
         currentHP = maxHP;
 
     }
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

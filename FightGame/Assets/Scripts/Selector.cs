@@ -7,6 +7,7 @@ public class Selector : MonoBehaviour {
     public GameObject player;
     public GameObject gameInfo;
     public CanvasGroup battleUI;
+    public CanvasGroup menuUI;
     public GameObject previousSelection;
     public GameObject currentSelection;
     public GameObject nextSelection;
@@ -33,8 +34,10 @@ public class Selector : MonoBehaviour {
 
     }
 
+
     private void OnEnable()
     {
+
         EnableBattleUI();
         //start battle for all players in the active party;
         foreach (GameObject i in player.GetComponent<PlayerParty>().activeParty)
@@ -50,16 +53,10 @@ public class Selector : MonoBehaviour {
             i.GetComponent<Enemy>().StartBattle();
         }
         gameInfo.GetComponent<EnemyCreator>().newEnemies.Clear();
-        currentSelection = playerUnits[0];
+        currentTurn = playerUnits[0];
+        gameObject.GetComponent<Info>().StartBattle();
     }
 
-    public IEnumerator SelectTarget()
-    {
-        while (!Input.GetKeyDown("Submit"))
-        {
-            yield return null;
-        }
-    }
 
     private void EnableBattleUI()
     {

@@ -66,12 +66,14 @@ public class Enemy : MonoBehaviour {
         SetEnemyPosition();
     }
 
+    /*
     private void OnMouseDown()
     {
         //update the selected target and move icon
         unitSelectorSelector.MoveSelectedIcon(gameObject.transform.position.x, (gameObject.transform.position.y + 0.7f));
         unitSelectorSelector.ChangeSelection(gameObject);
     }
+    */
 
     public void CheckForDeath()
     {
@@ -85,7 +87,6 @@ public class Enemy : MonoBehaviour {
             Destroy(healthBar);
             if (!CheckForBattleEnd())
             {
-                unitSelectorSelector.MoveSelectedIcon(unitSelectorSelector.enemies[0].transform.position.x, unitSelectorSelector.enemies[0].transform.position.y + 0.7f);
                 unitSelectorSelector.ChangeSelection(unitSelectorSelector.enemies[0]);
             }
         }

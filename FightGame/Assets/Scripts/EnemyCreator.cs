@@ -8,8 +8,8 @@ public class EnemyCreator : MonoBehaviour {
     public GameObject enemyType;
     public List<GameObject> newEnemies;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
